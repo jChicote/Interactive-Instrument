@@ -122,12 +122,12 @@ public class MenuState {
     keyPressed();
     
     filterVid.processFrame(frame);
-    tint(255, 160);
-    image(thresh, 0, 0);
-    //text("Text is forward", 10, 10);
     globalCenters = tracking.currentCenters;
     waterWave.renderPoints();
     waterWave.renderRipple();
+    tint(255, 90);
+    image(thresh, 0, 0);
+    noTint();
     tracking.trackingUpdate();
     if (globalCenters.size() > 0) {
       synth.update((int)globalCenters.get(0).y);
