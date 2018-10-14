@@ -1,3 +1,5 @@
+//Buffers associated in this class utilise a cellular automata model to propagate the wave.
+//Interaction amongst the pixel grid allow local cell values to propagate their values to their local cell neighbors only.
 
 public class rippleWave {  
   int cols;
@@ -7,6 +9,7 @@ public class rippleWave {
   PImage rippleImage;
   float dampening = 0.999;
   
+  //Initialise the ripplewave's variables
   public void initialise() {
     cols = width;
     rows = height;
@@ -15,6 +18,7 @@ public class rippleWave {
     rippleImage = createImage(width, height, HSB); 
   }
   
+  //Renders the buffers associated with global center's input
   public void renderPoints(ArrayList<PVector> globalCenters) {
     if(globalCenters.size() != 0) {
       for (PVector point : globalCenters) {
@@ -23,6 +27,7 @@ public class rippleWave {
     }
   }
   
+  //Renders propagation of ripple utilising the cellular automata model
   public void renderRipple() {
     println("Ripple renderRipple()");
     colorMode(HSB, height, height, height);
@@ -46,5 +51,4 @@ public class rippleWave {
     previousWave = currentWave;
     currentWave = tempBuffer;
   }
-  
 }
