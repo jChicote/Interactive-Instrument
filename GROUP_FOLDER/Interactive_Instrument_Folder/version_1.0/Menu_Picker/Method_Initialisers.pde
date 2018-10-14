@@ -1,7 +1,6 @@
-//This file contains the method initialisers t
+//This file contains the method initialisers that is responsible for re-initialising object variables when needed
 
 public void thereminInitialiser() {
-  video = new Capture(this, 1280, 720);
   video.start();
   frame = createImage(1280, 720, RGB);
   thresh = createImage(1280, 720, RGB);
