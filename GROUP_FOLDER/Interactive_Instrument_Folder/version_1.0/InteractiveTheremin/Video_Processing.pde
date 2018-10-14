@@ -8,16 +8,18 @@ public class VideoProcess {
   float green;
   float blue;
   float median;
-  float[] sampleMedians = new float[5];
-  color pixelSample;
+  float[] sampleMedians;
+
   
   VideoProcess(int min, int max) {
+    sampleMedians = new float[5];
     minRange = min;
     maxRange = max;
   }
   
   //This processes the input frame of a video and outputs the binary masked produce from range.
   void processFrame() {
+    println("Video_Processing processFrame()");
     opencv.loadImage(frame);
     opencv.flip(90);
     opencv.blur(2);
@@ -33,6 +35,7 @@ public class VideoProcess {
     sampleMedians[3] = sampleMedian(660, 400);
     sampleMedians[4] = sampleMedian(640, 430);
     findQuartile();
+    println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> " + minRange + ", " + maxRange);
   }
   
   //This finds the highest and lowest range and stretches its value to produce a trackable range
@@ -52,11 +55,11 @@ public class VideoProcess {
   
   //This is used in tandem with "testSample" to produce an output of a median based on the rgb value -> this outputs a value in HSV for binary masking
   float sampleMedian(int x, int y) {
+    colorMode(RGB, 255);
     float median = 0;
-    pixelSample = get(x, y);
-    red = red(pixelSample);
+    color pixelSample = frame.get(x, y);
     float total = red(pixelSample) + green(pixelSample) + blue(pixelSample);
-    //println(total);
+    println("CAPTURE TOTAL>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> " + red(pixelSample));
     median = total/765 * 255;
     return median;
   }
