@@ -8,7 +8,6 @@ MOST PRIORIRTY
 
 1 - When exiting out of Interactive Theremin when drawing, all elements (Text or background etc) become
     greyed or blacked out in colour.
-2 - OpenCV thresh does not render or process correctly during second capture (Interactive_Theremin).
 
 
 
@@ -20,4 +19,5 @@ LEAST PRIORITY
 
 ERRORS / BUGS FIXED
 
-1 -
+1 - OpenCV thresh does not render or process correctly during second capture (Interactive_Theremin).
+2 - colorMode() configuration is incorrectly set to HSV and falls through program.
