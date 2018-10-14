@@ -29,6 +29,7 @@ void setup()
 {
   size(1280, 720);
   background(255);
+  video = new Capture(this, 1280, 720);
   //surface.setResizable(true);
 
   baseWidth = width;
