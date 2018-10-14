@@ -28,7 +28,7 @@ public class Module_Theremin {
     println("Theremin initialise()");
     globalCenters = new ArrayList<PVector>();
     synths = new LinkedList<Theremin>();
-    filterVid = new VideoProcess(80, 255);
+    filterVid = new VideoProcess(200, 255);
     tracking = new MainTracking();
     waterWave = new rippleWave();
   }
@@ -74,36 +74,36 @@ public class Module_Theremin {
   
   //Captures HSV profile from webcam video input
   void captureSample() {
-      println("Theremin captureSample()");
-      pushMatrix();
-      translate(video.width,0);
-      scale(-1, 1);
-      image(video, 0, 0);
-      popMatrix();
-      
-      stroke(255, 0, 0);
-      strokeWeight(2);
-      noFill();
-      ellipse(640, 280, 15, 15);
-      ellipse(620, 320, 15, 15);
-      ellipse(650, 360, 15, 15);
-      ellipse(660, 400, 15, 15);
-      ellipse(640, 430, 15, 15);
-      noStroke();
-      
-      theTimer.countDown();
-      fill(255);
-      textSize(50);
-      text(theTimer.getTime(), 20, 60);
-      textSize(30);
-      text("From about 1 meter distance. Cover the dots with your hand", 23, 100);
-      noFill();
-      
-      if (theTimer.finished == true) {
-        filterVid.testSample();
-        captureDone = true;
-        initialiseTheremin();
-      }
+    println("Theremin captureSample()");
+    pushMatrix();
+    translate(video.width,0);
+    scale(-1, 1);
+    image(video, 0, 0);
+    popMatrix();
+    
+    stroke(255, 0, 0);
+    strokeWeight(2);
+    noFill();
+    ellipse(640, 280, 15, 15);
+    ellipse(620, 320, 15, 15);
+    ellipse(650, 360, 15, 15);
+    ellipse(660, 400, 15, 15);
+    ellipse(640, 430, 15, 15);
+    noStroke();
+    
+    theTimer.countDown();
+    fill(255);
+    textSize(50);
+    text(theTimer.getTime(), 20, 60);
+    textSize(30);
+    text("From about 1 meter distance. Cover the dots with your hand", 23, 100);
+    noFill();
+    
+    if (theTimer.finished == true) {
+      filterVid.testSample();
+      captureDone = true;
+      initialiseTheremin();
+    }
   }
   
   //Renders instrument synthesiser and display information
@@ -144,7 +144,7 @@ public class Module_Theremin {
     }
   }
   
-//------------------------------------------------- Instrumet Handlers ------------------------------------------------------ 
+//------------------------------------------------- Instrumet Additional Handlers ------------------------------------------------------ 
   
   void keyPressedCheck() {
     println("Theremin keyPressedCheck()");
@@ -164,5 +164,6 @@ public class Module_Theremin {
     globalCenters.clear();
     captureDone = false;
     pressed = false;
+    colorMode(RGB, 255);
   }
 }
