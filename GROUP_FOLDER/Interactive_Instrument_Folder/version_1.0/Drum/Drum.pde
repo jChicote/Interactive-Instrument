@@ -1,0 +1,128 @@
+PImage img1;//the drum image
+PImage img;//the cymbals image
+SoundFile file;
+import processing.sound.*;
+import beads.*;
+float[] volume = {0.0,0.1,0.4,0.7,1.0};//store the level of volume
+float[] speed = {0.7,1,1.5};//store the three level of speed
+int levelOfVolume = 1;//initial level of volume
+int levelOfSpeed = 1;// initial levle of speed
+color from = color (#0F0101);//set the colour of volume process bar
+color to = color (#0F0101);//set the colour of volume process bar
+int j=1;// limited of process bar
+
+void setup()
+{
+    size(800, 600);
+    fill(0);
+    img1 = loadImage("drum.jpg");
+    img = loadImage("Suspendedcymbal.jpg"); 
+}   
+
+void keyReleased()
+{
+  
+  if(key == 'k' || key == 'K')// press k or K to play cymbals
+  {
+    String audioName = "Suspendedcymbal.wav";
+     file = new SoundFile(this,audioName);
+    file.amp(volume[levelOfVolume]);// set the volume of cymbals
+    file.rate(speed[levelOfSpeed]);// set the speed of cymbals
+    file.play();
+  }
+  if(key == 's' || key == 'S')// press s or S to play durm
+  {
+    
+    String audioFieldName = "conga1hit.wav";
+    file = new SoundFile(this,audioFieldName);
+    file.amp(volume[levelOfVolume]);// set the volume of drum
+    file.rate(speed[levelOfSpeed]);// set the speed of drum
+    file.play();
+  }
+  if(key == 'q' || key == 'Q')// press q or Q to increase the volume
+    {
+      levelOfVolume += 1;
+      if(levelOfVolume >= 4)// limited the max of volume is 4(1.0)
+      {
+        levelOfVolume = 4;
+      }
+      j++;// increase j to limited the prcess bar
+      if(j >= 4)// limited the max of process bar is 4
+      {
+        j = 4;
+      }
+    }
+    if(key == 'w' || key == 'W')// press w or W to decrease the volume
+    {
+      levelOfVolume -= 1;
+      if(levelOfVolume <= 1)//limited the min of volume is 1(0.1)
+      {
+        levelOfVolume = 1;
+      } 
+        j--;// decrease j to limited the process bar
+       if(j <= 1)//limited the min of process is 1
+      {
+        j = 1;
+      }
+    }
+    if(key == 'o' || key == 'O')// press o or O to increase the speed
+    {
+      levelOfSpeed += 1;
+      if(levelOfSpeed >= 2)//set the max of speed is 2(1.5)
+      {
+        levelOfSpeed = 2;
+      }
+    }
+    if(key == 'p' || key == 'P')// press p or P to decrease the speed
+    {
+      levelOfSpeed -= 1;
+      if(levelOfSpeed <= 0)// set the min of speed is 0(0.7)
+      {
+        levelOfSpeed = 0;
+      }
+    }
+}
+
+void draw()
+{
+    background(255);
+    textSize(20);
+    text("Ues mouse or keyboard to play the drum!!!",10,50);
+    text("Drum: left of mouse or ‘s’",10,85);
+    text("cymbals: right of mouse or 'k'",10,120);
+    text("q: increase the volume    w: decrease the volume",10,155);
+    text("o: increase the speed     p: decrease the speed",10,190);
+    imageMode(CORNER);
+    image(img1, 120, 300, 250, 250);
+    imageMode(CENTER);
+    image(img, 550, 450, 200, 200); 
+    rect(25+55,565,15, 20, 50);// set the first process bar
+    for (int i=1;i<j;i++) // as user press q or w to increase or decrease volume to add or delete the process bar
+    {
+       rect(i*25+85,565,15, 20, 50);
+    }
+    text("volume ",3,height-20);
+    text("speed: " + levelOfSpeed, 500,height-20);//show the current level of speed
+}
+
+void mousePressed()
+{
+       if(mousePressed && (mouseButton == LEFT))// click left of mouse to play drum
+       {  
+         String audioFieldName = "conga1hit.wav";
+         file = new SoundFile(this,audioFieldName);
+         file.amp(volume[levelOfVolume]);// set the volume of drum
+         file.rate(speed[levelOfSpeed]);// set the speed of drum
+         file.play();
+       }
+       if(mousePressed && (mouseButton == RIGHT))// click right of mouse to play cymbals
+       {
+         String audioName = "Suspendedcymbal.wav";
+         file = new SoundFile(this,audioName);
+         file.amp(volume[levelOfVolume]);// set the volume of cymbals
+         file.rate(speed[levelOfSpeed]);// set the speed of cymbals
+         file.play();
+       }
+}
+
+  
