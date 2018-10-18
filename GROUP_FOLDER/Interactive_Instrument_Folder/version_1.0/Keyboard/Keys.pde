@@ -20,9 +20,9 @@ public class Keys
   {
     if (isActive)
     {
-      fill(0);
-      rect(key == 0 ? 900: (key - 1) * 100, 0, 100, 100);
       fill(255);
+      rect(key == 0 ? 900: (key - 1) * 100, 0, 100, 400);
+      fill(0);
     }
     else
     {
