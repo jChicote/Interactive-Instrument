@@ -18,20 +18,19 @@ PImage img;
 
 void settings() 
 {
-   size(1000,800);
+   size(900,800);
 }
 
 void setup()
 {
    loop();
    delay(5);
-   img = loadImage("Heaven_Background_by_Computerinkt.jpg");
    ac = new AudioContext();
    g1 = new Gain (ac, 1, 1f);
    ac.start();
    ac.out.addInput(g1);
    noStroke();
-   textSize(32);
+   textSize(30);
    try
    {
      sample = new Sample(dataPath("key sound.wav"));
@@ -55,7 +54,11 @@ void setup()
 void draw()
 {
   clear();
-  background(img);
+  background(255, 163, 70);
+  rect(100, 0, 100, 400);
+  rect(300, 0, 100, 400);
+  rect(500, 0, 100, 400);
+  rect(700, 0, 100, 400);
   for (Map.Entry<Integer, Keys> k : keys.entrySet())
   {
     k.getValue().drawObject();
@@ -69,13 +72,13 @@ void draw()
     
     int vOffset = (int) ((1 + ac.out.getValue(0, buffIndex)) * height / 1.5);
     vOffset = min(vOffset, height);
-    pixels[vOffset * height + i] = fore1;
+    //pixels[vOffset * height + i] = fore1;
     //pixels[vOffset * height - i] = fore2;
     pixels[vOffset * width - i] = fore2;
     pixels[vOffset * width + i] = back;
   }
   updatePixels();
-  text("Use the keyboard to press a number", 150, 750);
+  text("Use the keyboard or mousepad to press a number", 150, 750);
 }
 void keyPressed()
 {
