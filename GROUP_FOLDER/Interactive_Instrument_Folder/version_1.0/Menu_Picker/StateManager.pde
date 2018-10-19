@@ -1,3 +1,4 @@
+//This changes the stored "String" state of the display. Mainly created for "menu"
 public void changeState(String tempState)
 {
   reset();
@@ -11,6 +12,7 @@ public void changeState(String tempState)
   //}
 }
 
+//This is used for switching between displays and running the initial methods for beginning a new display
 public void runState()
 {
   if (state == "MENU") {
@@ -44,6 +46,7 @@ public void runState()
   }
 }
 
+//This checks state and runs the appropriate method according to the state var
 public void checkState()
 {
   if (stateVar == 1) {
