@@ -1,3 +1,4 @@
+//Checkes when the mouse is pressed. This function is global
 void mousePressed()
 {
   if (state == "MENU") {
@@ -25,6 +26,7 @@ void mousePressed()
   }
 }
 
+//This listens if the mouse is released. This function is globally accessible
 void mouseReleased()
 {
   for (int i=0; i < 4; i++)
