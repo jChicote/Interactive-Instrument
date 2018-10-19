@@ -1,4 +1,4 @@
-//This changes the stored "String" state of the display. Mainly created for "menu"
+//This changes the stored "String" state of the display (cosisting of two states only). Mainly created for "menu" and "other""
 public void changeState(String tempState)
 {
   reset();
@@ -12,7 +12,7 @@ public void changeState(String tempState)
   //}
 }
 
-//This is used for switching between displays and running the initial methods for beginning a new display
+//This is used for switching between displays and running the initial methods for beginning a new display and instrument
 public void runState()
 {
   if (state == "MENU") {
@@ -46,13 +46,14 @@ public void runState()
   }
 }
 
-//This checks state and runs the appropriate method according to the state var
+//This checks state and runs the appropriate method according to the state variable number assigned to instrument
 public void checkState()
 {
   if (stateVar == 1) {
     //Placeholder comment
-    p.display();
+    //p.display();
   } else if (stateVar == 2) {
+    //This runs the theremin
     video.loadPixels();
     interactiveTheremin.methodRunner();
     updatePixels();
