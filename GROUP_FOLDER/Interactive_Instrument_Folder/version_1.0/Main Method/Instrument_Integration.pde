@@ -15,6 +15,9 @@ public int stateVar, baseWidth, baseHeight;
 public float windowScale, heightScale, widthScale;
 public String state = "MENU";
 
+//This is an ordered list of the naming of the menu buttons
+String[] instruments = {"Keyboard", "Theremin", "instrument3", "instrument4"};
+
 //Replace Temp objects with actual classes
 Piano p;
 
@@ -109,7 +112,7 @@ void drawRectangle()
     fill(0);
     textAlign(LEFT);
     textSize(30.0 * windowScale);
-    text("Menu " + i, rectX[i]+rectSizeX/2.8, rectY[i]+rectSizeY/1.6);
+    text(instruments[i], rectX[i]+20, rectY[i]+rectSizeY/1.5);
   }
 }
 
