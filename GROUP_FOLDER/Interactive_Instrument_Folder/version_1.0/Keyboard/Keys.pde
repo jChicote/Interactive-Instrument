@@ -1,3 +1,5 @@
+//import beads.*;
+
 public class Keys
 {
   SamplePlayer sp;
@@ -5,10 +7,10 @@ public class Keys
   boolean isActive = false;
   Gain objectGain;
   
-  public Keys (int key, float pitch)
+  public Keys (int key, float pitch, AudioContext ac, Sample sample, Gain g1)
   {
     this.key = key;
-    this.sp = new SamplePlayer(ac, sample);
+    this.sp = new SamplePlayer(ac, sample); //NullPointer
     objectGain = new Gain (ac, 1, 0.1f);
     sp.setPitch(new Glide(ac, pitch));
     sp.setLoopType(SamplePlayer.LoopType.LOOP_FORWARDS);
@@ -16,6 +18,7 @@ public class Keys
     objectGain.addInput(sp);
     g1.addInput(objectGain);
   }
+  
   void drawObject()
   {
     if (isActive)
@@ -30,6 +33,7 @@ public class Keys
     }
     text(key + "", (key == 0 ? 900: (key - 1) * 100) + 50, 50);
   }
+  
   void play()
   {
     isActive = true;
