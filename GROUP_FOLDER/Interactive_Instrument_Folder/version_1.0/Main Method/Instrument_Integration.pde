@@ -76,6 +76,7 @@ void draw()
   //println("The current state is: " + state);
 }
 
+//This is just called to reset the background
 void reset() {
   surface.setSize(baseWidth, baseHeight);
   background(255);
