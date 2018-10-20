@@ -1,0 +1,15 @@
+This is a procedure in integrating the code into the code
+
+1. download a clone or zip file of all the code. OR . copy code from the github files into processing.
+2. Utilising the versions of the program that has been downloaded or copied into processing, implement/link your code to 
+    the menu picker and main method files (input manager, state manager, main method) so that they can run altogether.
+3. Do some maintenance: ensuring that the created display or object does not intefere with other parts of the program,
+    ensuring that there are no unecessary background processes running, and ensuring that you have not majorly damaged or
+    altered other members code to also affect other group members.
+4. UPLOAD: NOTE DO NOT COPY OR UPLOAD THE ENTIRE CODE INTO THE RESPECTIVE GITHUB FILES (as this may affect changes made 
+    already by other members.
+    - if making changes on other members code, ONLY UPLOAD BITS OF CHANGED LINES OF CODE, DO NOT PASTE OR UPLOAD THE WHOLE 
+      FILE. (again..may affect other members coded changes).
+    - If made new files that do not exist in github, upload those files into the appropriate folder.
+    - Ensure that you commit the changes.
+5. Lastly make sure that you contact the group that you have made changes.
