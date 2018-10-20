@@ -24,7 +24,7 @@ public void runState()
     if (input[0]) {
       stateVar = 1;
       //t = new Temp();
-      p.initiate();
+      keyboardInitaliser();
     }
     if (input[1]) {
       stateVar = 2;
@@ -49,9 +49,11 @@ public void runState()
 //This checks state and runs the appropriate method according to the state variable number assigned to instrument
 public void checkState()
 {
+  println(width, height);
   if (stateVar == 1) {
-    //Placeholder comment
-    //p.display();
+    //runs method runner of KeyBoard class
+    println(width, height);
+    keyboard.methodRunner();
   } else if (stateVar == 2) {
     //This runs the theremin
     video.loadPixels();
