@@ -119,6 +119,12 @@ public class Module_Theremin {
     image(thresh, 0, 0);
     noTint();
     
+    fill(255);
+    textSize(20);
+    text("Upper Threshold: press 's' or 'x' key", 20, 0.95 * height);
+    text("Lower Threshold: press 'a' or 'z' key", 20, 0.95 * height + 20);
+    noFill();
+    
     tracking.trackingUpdate();
     
     if (globalCenters.size() > 0) {
