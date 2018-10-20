@@ -36,7 +36,7 @@ void mouseReleased()
       input[i] = false;
     }
     if (stateVar == 1) {
-      p.mouseReleaseCheck();
+      keyboard.mouseReleasedDetection();
     } else if (stateVar == 2) {
       //Placeholder Code
     } else if (stateVar == 3) {
@@ -57,7 +57,7 @@ void keyPressed()
     //}
 
     if (stateVar == 1) {
-      p.keyPressCheck();
+      keyboard.keyPressedDetection();
     } else if (stateVar == 2) {
       interactiveTheremin.keyPressedCheck();
     } else if (stateVar == 3) {
@@ -73,7 +73,7 @@ void keyReleased()
   if (state == "OTHER") 
   {
     if (stateVar == 1) {
-      p.keyReleaseCheck();
+      keyboard.keyReleasedDetection();
     } else if (stateVar == 2) {
       //Placeholder Code
     } else if (stateVar == 3) {
