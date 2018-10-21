@@ -155,18 +155,18 @@ void drawRectangle()
     }
     noStroke();
     rect(rectX[i], rectY[i], rectSizeX, rectSizeY);
-    fill(255);
+    fill(0);
     textAlign(CENTER);
     textFont(menuFont);
-    textSize(45.0 * windowScale);
+    textSize(30.0 * windowScale);
     if (i == 0) {
-      text("Theremin", rectX[i]+rectSizeX/2, rectY[i]+rectSizeY/1.6);
+      text("Theremin", rectX[i]+rectSizeX/2, rectY[i]+rectSizeY/1.5);
     } else if (i == 1) {
-      text("Guitar", rectX[i]+rectSizeX/2, rectY[i]+rectSizeY/1.6);
+      text("Guitar", rectX[i]+rectSizeX/2, rectY[i]+rectSizeY/1.5);
     } else if (i == 2) {
-      text("Drum", rectX[i]+rectSizeX/2, rectY[i]+rectSizeY/1.6);
+      text("Drum", rectX[i]+rectSizeX/2, rectY[i]+rectSizeY/1.5);
     } else if (i == 3) {
-      text("Piano", rectX[i]+rectSizeX/2, rectY[i]+rectSizeY/1.6);
+      text("Piano", rectX[i]+rectSizeX/2, rectY[i]+rectSizeY/1.5);
     }
   }
     textFont(defaultFont);
@@ -182,8 +182,10 @@ void drawInstructions() {
   textAlign(LEFT);
   textSize(30);
   textFont(titleFont);
-  text("SELECT AN INSTRUMENT", baseWidth/3.0, 40.0/heightScale);
+  text("SELECT AN INSTRUMENT", width/2, 40.0/heightScale);
+  stroke(255);
   line(0, 55.0/heightScale, baseWidth, 55.0/heightScale);
+  stroke(0);
 }
 
 //This draws the usable control devices
@@ -206,22 +208,25 @@ void drawIcon() {
         dispKeyboard = contKeyboard[1];
     }
     
-    dispIcon = instruments[iconState];
-    dispCamera.resize(0, 75);
-    dispMouse.resize(0, 80);
-    dispKeyboard.resize(0, 75);
-    dispIcon.resize(260,275);
+    dispIcon = instrumentsIcon[iconState];
+    dispCamera.resize(0, 85);
+    dispMouse.resize(0, 90);
+    dispKeyboard.resize(0, 85);
+    dispIcon.resize(472,500);
     
-    fill(255, 204, 153); //CHANGE THIS TO THE BACKGROUND COLOUR
+    float controlX = 760;
+    float controlY = 600;
+    
+    fill(33,33,33); //CHANGE THIS TO THE BACKGROUND COLOUR
     noStroke();
-    rect(430,230,dispIcon.width, dispIcon.height);
-    rect(460,510,dispCamera.width, dispCamera.height);
-    rect(460+iconDeviation+10,508,dispMouse.width, dispMouse.height);
-    rect(460+iconDeviation*2,510,dispKeyboard.width, dispKeyboard.height);
-    image(dispIcon, 430, 230);
-    image(dispCamera, 460, 510);
-    image(dispMouse, 460+iconDeviation+10, 508);
-    image(dispKeyboard, 460+iconDeviation*2, 510);
+    rect(640, 100,dispIcon.width, dispIcon.height);
+    rect(controlX,controlY,dispCamera.width, dispCamera.height);
+    rect(controlX+iconDeviation+10,controlY-2,dispMouse.width, dispMouse.height);
+    rect(controlX+iconDeviation*2,controlY,dispKeyboard.width, dispKeyboard.height);
+    image(dispIcon, 640, 100);
+    image(dispCamera, controlX, controlY);
+    image(dispMouse, controlX+iconDeviation+10, controlY-2);
+    image(dispKeyboard, controlX+iconDeviation*2, controlY);
     stroke(0);
 }
 
@@ -229,7 +234,7 @@ void updateIcon()
 {
   for (int i = 0; i < 4; i++)
   {
-    if (activeRect == i)
+    if (rectOver[i] || activeRect == i)
     {
       iconState = i;
     }
@@ -245,6 +250,7 @@ void mouseUpdate()
       if ((mouseX >= rectX[i])&&(mouseX <= rectX[i]+rectSizeX)&&(mouseY >= rectY[i])&&(mouseY <= rectY[i]+rectSizeY))
       {
         rectOver[i]=true;
+        activeRect = i;
       } else {
         rectOver[i]=false;
       }
