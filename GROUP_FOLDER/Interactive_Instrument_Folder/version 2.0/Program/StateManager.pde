@@ -18,6 +18,7 @@ public void runState()
   if (state == "MENU") {
     drawInstructions();
     drawRectangle();
+    updateIcon();
     stateVar = 0;
   }
   if (state == "OTHER") {
