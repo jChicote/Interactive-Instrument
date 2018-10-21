@@ -10,9 +10,7 @@ public void thereminInitialiser() {
   interactiveTheremin.initialiseCapture();
 }
 void keyboardInitialiser() {
-  println(width, height);
   surface.setSize(1100, 800);
   updatePixels();
-  //KeyBoard keyboard = new KeyBoard();
   keyboard.initialise();
 }
