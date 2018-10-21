@@ -182,11 +182,11 @@ void drawInstructions() {
 
 //This draws the usable control devices
 void drawIcon() {
-    if (iconState == 1) { 
+    if (iconState == 0) { 
         dispCamera = contCamera[0];
         dispMouse = contMouse[1];
         dispKeyboard = contKeyboard[1];
-    } else if (iconState == 0) {
+    } else if (iconState == 1) {
         dispCamera = contCamera[1];
         dispMouse = contMouse[0];
         dispKeyboard = contKeyboard[0];
