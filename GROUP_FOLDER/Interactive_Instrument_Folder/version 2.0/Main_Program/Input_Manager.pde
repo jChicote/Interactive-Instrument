@@ -50,11 +50,27 @@ void mouseReleased()
 //This is the hander for the keys that are currently pressed in ALL states of the program
 void keyPressed()
 {
+  if (key == CODED)
+  {
+    if (keyCode == UP) {
+      println("HI");
+      if (activeRect != -1) { activeRect -= 1; }
+      if (activeRect == -1) { activeRect = 3; }
+    }
+    if (keyCode == DOWN) {
+      if (activeRect != 4) { activeRect += 1; }
+      if (activeRect == 4) { activeRect = 0; }
+    }
+  }
+  if (keyCode == 10) {
+    input[activeRect] = true;
+    changeState("OTHER");
+  }
+  
   if (state == "OTHER") {
-    //if (key == BACKSPACE); /*Doesn't detect any special keys properly at the moment.*/
-    //{
-    //  changeState("MENU");
-    //}
+    if (keyCode == 8) {
+      changeState("MENU");
+    }
 
     if (stateVar == 1) {
       keyboard.keyPressedDetection();
