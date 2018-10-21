@@ -78,8 +78,8 @@ void setup()
   menuFont = createFont("GillSansCond.TTF", 30.0);
   
   //Images setup
-  instrumentsIcon[0] = loadImage("Inst - Theremin.png");
-  instrumentsIcon[1] = loadImage("Inst - Piano.png");
+  instrumentsIcon[0] = loadImage("Inst - Piano.png");
+  instrumentsIcon[1] = loadImage("Inst - Theremin.png");
   instrumentsIcon[2] = loadImage("Inst - Acoustic Guitar.png");
   instrumentsIcon[3] = loadImage("Inst - Drum.png");
   contCamera[0] = loadImage("Control - Hand Tracking Inactive.png");
@@ -182,14 +182,14 @@ void drawInstructions() {
 
 //This draws the usable control devices
 void drawIcon() {
-    if (iconState == 0) {
-        dispCamera = contCamera[1];
-        dispMouse = contMouse[0];
-        dispKeyboard = contKeyboard[0];
-    } else if (iconState == 1) { 
+    if (iconState == 1) { 
         dispCamera = contCamera[0];
         dispMouse = contMouse[1];
         dispKeyboard = contKeyboard[1];
+    } else if (iconState == 0) {
+        dispCamera = contCamera[1];
+        dispMouse = contMouse[0];
+        dispKeyboard = contKeyboard[0];
     } else if (iconState == 2) { 
         dispCamera = contCamera[0];
         dispMouse = contMouse[1];
