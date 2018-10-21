@@ -24,10 +24,10 @@ public float windowScale, heightScale, widthScale;
 public String state = "MENU";
 
 //This is an ordered list of the naming of the menu buttons
-String[] instruments = {"Keyboard", "Theremin", "Guitar", "instrument4"};
+String[] instruments = {"Theremin", "Piano", "Guitar", "Drum"};
 
 //Variables related to icons in the main menu
-PImage instruments[] = new PImage[4];
+PImage instrumentsIcon[] = new PImage[4];
 PImage contCamera[] = new PImage[2];
 PImage contMouse[] = new PImage[2];
 PImage contKeyboard[] = new PImage[2];
@@ -78,10 +78,10 @@ void setup()
   menuFont = createFont("GillSansCond.TTF", 30.0);
   
   //Images setup
-  instruments[0] = loadImage("Inst - Theremin.png");
-  instruments[1] = loadImage("Inst - Acoustic Guitar.png");
-  instruments[2] = loadImage("Inst - Drum.png");
-  instruments[3] = loadImage("Inst - Piano.png");
+  instrumentsIcon[0] = loadImage("Inst - Theremin.png");
+  instrumentsIcon[1] = loadImage("Inst - Piano.png");
+  instrumentsIcon[2] = loadImage("Inst - Acoustic Guitar.png");
+  instrumentsIcon[3] = loadImage("Inst - Drum.png");
   contCamera[0] = loadImage("Control - Hand Tracking Inactive.png");
   contCamera[1] = loadImage("Control - Hand Tracking.png");
   contMouse[0] = loadImage("Control - Mouse Inactive.png");
@@ -159,15 +159,7 @@ void drawRectangle()
     textAlign(CENTER);
     textFont(menuFont);
     textSize(30.0 * windowScale);
-    if (i == 0) {
-      text("Theremin", rectX[i]+rectSizeX/2, rectY[i]+rectSizeY/1.5);
-    } else if (i == 1) {
-      text("Guitar", rectX[i]+rectSizeX/2, rectY[i]+rectSizeY/1.5);
-    } else if (i == 2) {
-      text("Drum", rectX[i]+rectSizeX/2, rectY[i]+rectSizeY/1.5);
-    } else if (i == 3) {
-      text("Piano", rectX[i]+rectSizeX/2, rectY[i]+rectSizeY/1.5);
-    }
+    text(instruments[i], rectX[i]+rectSizeX/2, rectY[i]+rectSizeY/1.5);
   }
     textFont(defaultFont);
     stroke(0);
