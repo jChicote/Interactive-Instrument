@@ -1,8 +1,13 @@
 import processing.video.*;
 import gab.opencv.*;
 import java.util.*;
-//Main Method
+import beads.*;
+import org.jaudiolibs.bead.*;
+import java.util.Map;
+import java.io.IOException;
+import java.util.Arrays;
 
+//Variables associated with MENU
 private float[] rectX = new float[4];
 private float[] rectY = new float[4];
 private float deviation, backX, backY, backSizeX, backSizeY, rectSizeX, rectSizeY;
@@ -27,10 +32,12 @@ PImage frame, thresh;
 //Variables Associated with KEYBOARD;
 KeyBoard keyboard = new KeyBoard();
 
+//sets surface size
 void settings() {
   size(1280, 720);
 }
 
+//Setup method. Must only run once
 void setup()
 {
   background(255);
@@ -48,6 +55,7 @@ void setup()
   deviation = (rectSizeY/2.5+height/5.8);
 }
 
+//Main Method
 void draw()
 {
   mouseUpdate();
