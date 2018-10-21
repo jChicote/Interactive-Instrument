@@ -52,7 +52,6 @@ public void checkState()
   println(width, height);
   if (stateVar == 1) {
     //runs method runner of KeyBoard class
-    println(width, height);
     keyboard.methodRunner();
   } else if (stateVar == 2) {
     //This runs the theremin
