@@ -18,22 +18,24 @@ public String state = "MENU";
 //This is an ordered list of the naming of the menu buttons
 String[] instruments = {"Keyboard", "Theremin", "instrument3", "instrument4"};
 
-//Replace Temp objects with actual classes
-Piano p;
-
 //Variables associated with INTERACTIVE_THEREMIN
 Capture video;
 OpenCV opencv;
 Module_Theremin interactiveTheremin;
 PImage frame, thresh;
 
+//Variables Associated with KEYBOARD;
+KeyBoard keyboard = new KeyBoard();
+
+void settings() {
+  size(1280, 720);
+}
 
 void setup()
 {
-  size(1280, 720);
   background(255);
   video = new Capture(this, 1280, 720);
-  //surface.setResizable(true);
+  surface.setResizable(true);
 
   baseWidth = width;
   baseHeight = height;
@@ -44,10 +46,13 @@ void setup()
   rectSizeX = width/2.0 * widthScale;
   rectSizeY = height/6.6 * heightScale;
   deviation = (rectSizeY/2.5+height/5.8);
+}
 
-  //Replace the temp instances
-  p = new Piano();
-
+void draw()
+{
+  mouseUpdate();
+  runState();
+  checkState();
 }
 
 void backUpdate()
@@ -63,17 +68,6 @@ void captureEvent(Capture video) {
   frame.copy(video, 0, 0, video.width, video.height, 0, 0, frame.width, frame.height);
   frame.updatePixels();
   video.read();
-}
-
-void draw()
-{
-  mouseUpdate();
-  runState();
-  checkState();
-  if (interactiveTheremin!=null) {println(interactiveTheremin);}
-  //if (video!=null) {println("Video Available: " + video.available()); }
-  //if (interactiveTheremin!=null) {println(interactiveTheremin.synths); }
-  //println("The current state is: " + state);
 }
 
 //This is just called to reset the background
