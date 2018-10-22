@@ -39,9 +39,7 @@ public void runState()
     }
     if (input[3]) {
       stateVar = 4;
-      //t4 = new TempFour();
-      //t4.initiate();
-      //t4.display();
+      drumInitialiser();
     }
     backUpdate();
   }
@@ -61,7 +59,7 @@ public void checkState()
   } else if (stateVar == 3) {
     guitar.methodRunner();
   } else if (stateVar == 4) {
-    //Placeholder comment
+    drum.methodRunner();
   }
   drawPrevious();
 }
