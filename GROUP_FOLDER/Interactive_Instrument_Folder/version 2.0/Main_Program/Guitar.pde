@@ -42,7 +42,7 @@ class Guitar
         }  
   }
   
-  void keyPressedDetection()
+  void keyPressedCheck()
   {
 
     if (keyPressed == true){
@@ -50,7 +50,7 @@ class Guitar
     {
       now ++;
     }
-    if (key == 'z'){player = minim.loadFile("c1.wav");player.play();}
+    if (key == 'z'){player = minim.loadFile("c1.wav");player.play();} /*-= Change this on final*/
     if (key == 'x'){player = minim.loadFile("d1.wav");player.play();}
     if (key == 'c'){player = minim.loadFile("e1.wav");player.play();}
     if (key == 'v'){player = minim.loadFile("f1.wav");player.play();}
@@ -83,7 +83,7 @@ class Guitar
     }
   }
   
-  void mousePressedDetection()
+  void mousePressedCheck()
   {
     
     if (mousePressed == true){
