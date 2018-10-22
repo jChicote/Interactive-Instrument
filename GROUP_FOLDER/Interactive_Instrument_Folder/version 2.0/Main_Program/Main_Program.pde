@@ -24,7 +24,7 @@ public float windowScale, heightScale, widthScale;
 public String state = "MENU";
 
 //This is an ordered list of the naming of the menu buttons
-String[] instruments = {"Theremin", "Piano", "Guitar", "Drum"};
+String[] instruments = {"Keyboard", "Theremin", "Guitar", "Drum"};
 
 //Variables related to icons in the main menu
 PImage instrumentsIcon[] = new PImage[4];
@@ -49,6 +49,16 @@ KeyBoard keyboard = new KeyBoard();
 Guitar guitar;
 Minim minim;
 AudioPlayer player;
+
+//Variables Associated with DRUM
+Drum drum;
+Minim drumMinim;
+AudioPlayer drumPlayer;
+
+//font variables
+PFont titleFont;
+PFont defaultFont;
+PFont menuFont;
 
 //sets surface size
 void settings() {
