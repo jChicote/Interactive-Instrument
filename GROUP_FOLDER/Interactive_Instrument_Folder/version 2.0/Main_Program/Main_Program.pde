@@ -22,6 +22,12 @@ public int stateVar, baseWidth, baseHeight, activeRect, iconState;
 public int iconDeviation = 70;
 public float windowScale, heightScale, widthScale;
 public String state = "MENU";
+public color baseColor = color(33,33,33);
+
+//font variables
+PFont titleFont;
+PFont defaultFont;
+PFont menuFont;
 
 //This is an ordered list of the naming of the menu buttons
 String[] instruments = {"Keyboard", "Theremin", "Guitar", "Drum"};
@@ -43,22 +49,17 @@ Module_Theremin interactiveTheremin;
 PImage frame, thresh;
 
 //Variables Associated with KEYBOARD;
-KeyBoard keyboard = new KeyBoard();
+Keyboard keyboard = new Keyboard();
 
-//Variables Associated with KEYBOARD;
-Guitar guitar;
+//Variables Associated with GUITAR;
+Guitar guitar = new Guitar();
 Minim minim;
 AudioPlayer player;
 
 //Variables Associated with DRUM
-Drum drum;
+Drum drum = new Drum();
 Minim drumMinim;
 AudioPlayer drumPlayer;
-
-//font variables
-PFont titleFont;
-PFont defaultFont;
-PFont menuFont;
 
 //sets surface size
 void settings() {
@@ -68,7 +69,7 @@ void settings() {
 //Setup method. Must only run once
 void setup()
 {
-  background(255, 204, 153);
+  background(baseColor);
   video = new Capture(this, 1280, 720);
   
   //Variables setup
@@ -83,7 +84,7 @@ void setup()
   deviation = (rectSizeY/2.5+height/5.8);
   
   //Fonts setup
-  titleFont = createFont("GillSansBold.TTF", 35.0);
+  titleFont = createFont("GillSansBold.TTF", 35.0); /*-= Change this on final*/
   defaultFont = createFont("LucidaGrande.ttf", 10.0);
   menuFont = createFont("GillSansCond.TTF", 30.0);
   
@@ -98,9 +99,6 @@ void setup()
   contMouse[1] = loadImage("Control - Mouse.png");
   contKeyboard[0] = loadImage("Control - Keyboard Inactive.png");
   contKeyboard[1] = loadImage("Control - Keyboard.png");
-  
-  //Classes setup
-  guitar = new Guitar();
 }
 
 //Main Method
@@ -128,13 +126,14 @@ void captureEvent(Capture video) {
   video.read();
 }
 
-//This is just called to reset the background
+//Method to reset the background.
 void reset() {
   iconState = 0;
   surface.setSize(baseWidth, baseHeight);
-  background(33, 33, 33);
+  background(baseColor);
 }
 
+//Draws the "BACK" button on the instruments.
 void drawPrevious()
 {
   if (state == "OTHER")
@@ -152,6 +151,7 @@ void drawPrevious()
   }
 }
 
+//Draws the menu buttons on the main menu.
 void drawRectangle()
 {
   for (int i = 0; i<4; i++)
@@ -175,15 +175,12 @@ void drawRectangle()
     stroke(0);
 }
 
-void drawTitle() {
-}
-
 void drawInstructions() {
   fill(15);
   rect(0,0, baseWidth, 55.0/heightScale);
   fill(233, 233, 233);
   textSize(35.0 * windowScale);
-  textAlign(LEFT);
+  textAlign(CENTER);
   textSize(30);
   textFont(titleFont);
   text("SELECT AN INSTRUMENT", width/2, 40.0/heightScale);
@@ -192,7 +189,7 @@ void drawInstructions() {
   stroke(0);
 }
 
-//This draws the usable control devices
+//This draws the instruments and its control methods.
 void drawIcon() {
     if (iconState == 0) { 
         dispCamera = contCamera[0];
@@ -221,7 +218,7 @@ void drawIcon() {
     float controlX = 760;
     float controlY = 600;
     
-    fill(33,33,33); //CHANGE THIS TO THE BACKGROUND COLOUR
+    fill(baseColor);
     noStroke();
     rect(640, 100,dispIcon.width, dispIcon.height);
     rect(controlX,controlY,dispCamera.width, dispCamera.height);
