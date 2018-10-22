@@ -21,7 +21,7 @@ void mousePressed()
     } else if (stateVar == 3) {
       guitar.mousePressedDetection();
     } else if (stateVar == 4) {
-      //Placeholder Code
+      drum.mousePressedDetection();
     }
   }
 }
@@ -79,7 +79,7 @@ void keyPressed()
     } else if (stateVar == 3) {
       guitar.keyPressedDetection();
     } else if (stateVar == 4) {
-      //Placeholder Code
+      drum.keyPressedDetection();
     }
   }
 }
