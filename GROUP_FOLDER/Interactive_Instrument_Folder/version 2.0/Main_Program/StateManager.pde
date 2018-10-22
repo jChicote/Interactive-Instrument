@@ -7,9 +7,7 @@ public void changeState(String tempState)
   for (int i = 0; i<4; i++) {
     rectOver[i] = false;
   }
-  //if (state == "MENU") {
   System.gc();
-  //}
 }
 
 //This is used for switching between displays and running the initial methods for beginning a new display and instrument
@@ -24,7 +22,6 @@ public void runState()
   if (state == "OTHER") {
     if (input[0]) {
       stateVar = 1;
-      //t = new Temp();
       keyboardInitialiser();
     }
     if (input[1]) {
@@ -34,12 +31,12 @@ public void runState()
     if (input[2]) {
       stateVar = 3;
       minim = new Minim(this);
-      surface.setSize(690,450); 
-      guitar.methodRunner();
+      surface.setSize(690,450);  ////Change size?
+      guitar.methodRunner(); ////Might want to change to initaliser instead.
     }
     if (input[3]) {
       stateVar = 4;
-      drumInitialiser();
+      drumInitialiser(); ////Might want to change how this Initialiser works. Draws + set up?
     }
     backUpdate();
   }
