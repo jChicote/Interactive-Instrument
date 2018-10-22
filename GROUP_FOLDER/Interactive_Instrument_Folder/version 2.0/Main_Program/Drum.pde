@@ -5,7 +5,7 @@ class Drum{
   PImage img;//the cymbals image
   
   //Currently Invalid
-  /*private void intilize()
+  /*void intilize()
   {
     Drumsetup();
     Drumdraw();
@@ -30,11 +30,11 @@ class Drum{
   {
       surface.setSize(800, 600); 
       fill(0);
-      img1 = loadImage("drum.jpg");
+      img1 = loadImage("drum.jpg"); /*-= Change this on final*/
       img = loadImage("Suspendedcymbal.jpg"); 
   }   
   
-  void keyPressedDetection()
+  void keyPressedCheck()
   {
     if(keyPressed == true)
     {
@@ -66,11 +66,11 @@ class Drum{
      
   }
   
-  void mousePressedDetection()
+  void mousePressedCheck()
   {
          if(mousePressed && (mouseButton == LEFT))// click left of mouse to play drum
          {  try {
-             drumPlayer = drumMinim.loadFile("conga.mp3");
+             drumPlayer = drumMinim.loadFile("conga.mp3"); ////NullPointer
              drumPlayer.play();
          } catch (NullPointerException e) {
            println("Audio File is missing");
