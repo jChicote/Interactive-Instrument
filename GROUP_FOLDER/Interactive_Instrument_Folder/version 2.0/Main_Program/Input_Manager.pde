@@ -15,13 +15,13 @@ void mousePressed()
       changeState("MENU");
     }
     if (stateVar == 1) {
-      //Placeholder Code
+      ////NO KEYBOARD?
     } else if (stateVar == 2) {
-      //Placeholder Code
+      ////Ask Jaiden: You using mouse for anything?
     } else if (stateVar == 3) {
-      guitar.mousePressedDetection();
+      guitar.mousePressedCheck();
     } else if (stateVar == 4) {
-      drum.mousePressedDetection();
+      drum.mousePressedCheck();
     }
   }
 }
@@ -36,7 +36,7 @@ void mouseReleased()
       input[i] = false;
     }
     if (stateVar == 1) {
-      keyboard.mouseReleasedDetection();
+      keyboard.mouseReleasedCheck();
     } else if (stateVar == 2) {
       //Placeholder Code
     } else if (stateVar == 3) {
@@ -53,7 +53,6 @@ void keyPressed()
   if (key == CODED)
   {
     if (keyCode == UP) {
-      println("HI");
       if (activeRect != -1) { activeRect -= 1; }
       if (activeRect == -1) { activeRect = 3; }
     }
@@ -73,13 +72,13 @@ void keyPressed()
     }
 
     if (stateVar == 1) {
-      keyboard.keyPressedDetection();
+      keyboard.keyPressedCheck();
     } else if (stateVar == 2) {
       interactiveTheremin.keyPressedCheck();
     } else if (stateVar == 3) {
-      guitar.keyPressedDetection();
+      guitar.keyPressedCheck();
     } else if (stateVar == 4) {
-      drum.keyPressedDetection();
+      drum.keyPressedCheck();
     }
   }
 }
@@ -89,7 +88,7 @@ void keyReleased()
   if (state == "OTHER") 
   {
     if (stateVar == 1) {
-      keyboard.keyReleasedDetection();
+      keyboard.keyReleasedCheck();
     } else if (stateVar == 2) {
       //Placeholder Code
     } else if (stateVar == 3) {
