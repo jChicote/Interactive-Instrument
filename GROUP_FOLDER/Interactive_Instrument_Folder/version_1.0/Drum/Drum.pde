@@ -36,7 +36,7 @@ void keyPressed()
 
 void Drumdraw()
 {
-    background(0);
+    background(255);
     textSize(20);
     
     text("Ues mouse or keyboard to play the drum!!!",200,50);
