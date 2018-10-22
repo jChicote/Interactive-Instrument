@@ -15,3 +15,8 @@ void keyboardInitialiser() {
   updatePixels();
   keyboard.initialise();
 }
+
+void drumInitialiser() {
+  drum = new Drum();
+  drum.Drumsetup();
+}
