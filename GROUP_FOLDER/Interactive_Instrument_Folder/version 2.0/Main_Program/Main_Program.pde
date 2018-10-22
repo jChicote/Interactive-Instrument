@@ -169,6 +169,8 @@ void drawTitle() {
 }
 
 void drawInstructions() {
+  fill(15);
+  rect(0,0, baseWidth, 55.0/heightScale);
   fill(233, 233, 233);
   textSize(35.0 * windowScale);
   textAlign(LEFT);
