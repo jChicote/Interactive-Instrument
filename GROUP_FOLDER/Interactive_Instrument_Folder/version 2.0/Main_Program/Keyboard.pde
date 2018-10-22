@@ -1,5 +1,4 @@
-/*== DEBUG: Loops, wave*/
-class Keyboard {
+class KeyBoard {
   
   //Global Variables
   AudioContext ac;
@@ -12,7 +11,7 @@ class Keyboard {
   color back = color(0, 0, 0);
   Glide carrierFreq, modFreqRatio;
   WavePlayer freqModulator;
-  PImage img; ////CHANGE THIS INTO WAVE?
+  PImage img;
   
   void initialise() {
      loop();
@@ -80,17 +79,17 @@ class Keyboard {
     text("Use the keyboard or mousepad to press a number", 150, 750);
   }
  
-  void keyPressedCheck() {
+  void keyPressedDetection() {
     Keys object = keys.get(keyCode);
   if (object != null) object.play();
   }
   
-  void keyReleasedCheck() {
+  void keyReleasedDetection() {
     Keys object = keys.get(keyCode);
     if (object != null) object.pause();
   }
   
-  void mouseReleasedCheck() {
+  void mouseReleasedDetection() {
     if(keyPressed) return;
     for (Map.Entry<Integer, Keys> k : keys.entrySet())
     {
