@@ -4,8 +4,22 @@ public void changeState(String tempState)
   reset();
   state = tempState;
   backOver = false;
+  
   for (int i = 0; i<4; i++) {
     rectOver[i] = false;
+  }
+  if (stateVar == 1)
+  {
+     keyboard.resetAll();
+  } else if (stateVar == 2)
+  {  
+     ////Insert theremin reset functions here.
+  } else if (stateVar == 3)
+  {  
+     guitar.resetAll();
+  } else if (stateVar == 4)
+  {
+     drum.resetAll();
   }
   System.gc();
 }
@@ -57,7 +71,4 @@ public void checkState()
     drum.methodRunner();
   }
   drawPrevious();
-}
-
-public void menuOne() {
 }
