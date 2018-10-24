@@ -1,3 +1,9 @@
+/* LEGEND
+/*== : Needs change from folks
+/*-= : Change on final
+//// : Bugs
+*/
+
 import processing.video.*;
 import gab.opencv.*;
 import java.util.*;
@@ -91,21 +97,21 @@ void setup()
   deviation = (rectSizeY/2.5+height/5.8);
   
   //Fonts setup
-  titleFont = createFont("GillSansBold.TTF", 35.0); /*-= Change this on final*/
-  defaultFont = createFont("LucidaGrande.ttf", 10.0);
-  menuFont = createFont("GillSansCond.TTF", 30.0);
+  titleFont = createFont("Fonts/GillSansBold.TTF", 35.0); /*-= Change this on final*/
+  defaultFont = createFont("Fonts/LucidaGrande.ttf", 10.0);
+  menuFont = createFont("Fonts/GillSansCond.TTF", 30.0);
   
   //Images setup
-  instrumentsIcon[0] = loadImage("Inst - Piano.png");
-  instrumentsIcon[1] = loadImage("Inst - Theremin.png");
-  instrumentsIcon[2] = loadImage("Inst - Acoustic Guitar.png");
-  instrumentsIcon[3] = loadImage("Inst - Drum.png");
-  contCamera[0] = loadImage("Control - Hand Tracking Inactive.png");
-  contCamera[1] = loadImage("Control - Hand Tracking.png");
-  contMouse[0] = loadImage("Control - Mouse Inactive.png");
-  contMouse[1] = loadImage("Control - Mouse.png");
-  contKeyboard[0] = loadImage("Control - Keyboard Inactive.png");
-  contKeyboard[1] = loadImage("Control - Keyboard.png");
+  instrumentsIcon[0] = loadImage("Icons/Inst - Piano.png");
+  instrumentsIcon[1] = loadImage("Icons/Inst - Theremin.png");
+  instrumentsIcon[2] = loadImage("Icons/Inst - Acoustic Guitar.png");
+  instrumentsIcon[3] = loadImage("Icons/Inst - Drum.png");
+  contCamera[0] = loadImage("Icons/Control - Hand Tracking Inactive.png");
+  contCamera[1] = loadImage("Icons/Control - Hand Tracking.png");
+  contMouse[0] = loadImage("Icons/Control - Mouse Inactive.png");
+  contMouse[1] = loadImage("Icons/Control - Mouse.png");
+  contKeyboard[0] = loadImage("Icons/Control - Keyboard Inactive.png");
+  contKeyboard[1] = loadImage("Icons/Control - Keyboard.png");
 }
 
 //Main Method
@@ -116,7 +122,7 @@ void draw()
   checkState();
 }
 
-void backUpdate()
+void backUpdate() /*== Might need update*/
 {
   //backX = width - (150.0 * widthScale);
   backX = 0.80 * width;
@@ -136,6 +142,7 @@ void captureEvent(Capture video) {
 //Method to reset the background.
 void reset() {
   iconState = 0;
+  imageMode(CORNERS);
   surface.setSize(baseWidth, baseHeight);
   background(baseColor);
 }
@@ -203,9 +210,15 @@ void drawIcon() {
         dispMouse = contMouse[1];
         dispKeyboard = contKeyboard[1];
     } else if (iconState == 1) {
+        if (videoAvailable) {
         dispCamera = contCamera[1];
         dispMouse = contMouse[0];
         dispKeyboard = contKeyboard[0];
+        } else {
+          dispCamera = contCamera[0];
+          dispMouse = contMouse[1];
+          dispKeyboard = contKeyboard[0];
+        }
     } else if (iconState == 2) { 
         dispCamera = contCamera[0];
         dispMouse = contMouse[1];
