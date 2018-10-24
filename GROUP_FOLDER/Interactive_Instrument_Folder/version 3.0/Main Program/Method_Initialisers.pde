@@ -22,7 +22,5 @@ void keyboardInitialiser() {
 }
 
 void drumInitialiser() {
-  drum = new Drum();
-  drum.Drumsetup();
-  drumMinim = new Minim(this);
+  drum.initialise();
 }
