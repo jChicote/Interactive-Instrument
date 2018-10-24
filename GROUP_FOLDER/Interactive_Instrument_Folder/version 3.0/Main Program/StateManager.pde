@@ -11,9 +11,12 @@ public void changeState(String tempState)
   if (stateVar == 1)
   {
      keyboard.resetAll();
-  } else if (stateVar == 2)
-  {  
-     ////Insert theremin reset functions here.
+  } else if (stateVar == 2) {  
+    if (videoAvailable) {
+      interactiveTheremin.resetAll();
+    } else {
+      interactiveTheremin.altReset();
+    }
   } else if (stateVar == 3)
   {  
      guitar.resetAll();
