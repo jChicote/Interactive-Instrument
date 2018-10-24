@@ -1,4 +1,4 @@
-//Checkes when the mouse is pressed. This function is global
+//Checks when the mouse is pressed. This function is global
 void mousePressed()
 {
   if (state == "MENU") {
@@ -15,7 +15,7 @@ void mousePressed()
       changeState("MENU");
     }
     if (stateVar == 1) {
-      ////NO KEYBOARD?
+      ////no code?
     } else if (stateVar == 2) {
       ////Ask Jaiden: You using mouse for anything?
     } else if (stateVar == 3) {
@@ -38,14 +38,13 @@ void mouseReleased()
     if (stateVar == 1) {
       keyboard.mouseReleasedCheck();
     } else if (stateVar == 2) {
-      //Placeholder Code
+      ////no code?
     } else if (stateVar == 3) {
-      //Placeholder Code
+      ////no code?
     } else if (stateVar == 4) {
-      //Placeholder Code
+      ////no code?
     }
   }
-}
 
 //This is the hander for the keys that are currently pressed in ALL states of the program
 void keyPressed()
@@ -90,11 +89,11 @@ void keyReleased()
     if (stateVar == 1) {
       keyboard.keyReleasedCheck();
     } else if (stateVar == 2) {
-      //Placeholder Code
+      ////no code?
     } else if (stateVar == 3) {
-      //Placeholder Code
+      ////no code?
     } else if (stateVar == 4) {
-      //Placeholder Code
+      ////no code?
     }
   }
 }
