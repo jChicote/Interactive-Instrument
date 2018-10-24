@@ -72,9 +72,6 @@ public class Module_Theremin {
   void methodRunner() {
     println("Theremin methodRunner()");
     if (videoAvailable) {
-      if (backOver) {
-        resetAll();
-      } else {
         video.loadPixels();
         if (captureDone == true) {
           renderSynthTheremin();
@@ -82,13 +79,8 @@ public class Module_Theremin {
           captureSample();
         }
         updatePixels();
-      }
     } else {
-      if (backOver) {
-        altReset();
-      } else {
         altRenderTheremin();
-      }
     }
   }
   
