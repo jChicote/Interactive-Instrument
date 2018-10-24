@@ -44,11 +44,7 @@ class KeyBoard {
   }
   
   void methodRunner() {
-    if (backOver) {
-      resetAll();
-    } else {
       renderKeyBoard();
-    }
   }
   
   void renderKeyBoard() {
