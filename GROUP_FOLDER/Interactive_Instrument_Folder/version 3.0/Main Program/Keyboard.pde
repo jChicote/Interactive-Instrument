@@ -24,7 +24,7 @@ class KeyBoard {
      textSize(30);
      try
      {
-       sample = new Sample(dataPath("key sound.mp3"));
+       sample = new Sample(dataPath("Sounds/Keyboard/key sound.mp3"));
      }
      catch (IOException e)
      {
