@@ -18,7 +18,7 @@ void methodRunner() {
 void Drumsetup()//set the interface of the drum
 {
     fill(255);
-    drum = loadImage("Icons/drum.jpg"); /*-= Change this on final*/
+    drum = loadImage("Icons/drum.jpg");
     cymbals = loadImage("Icons/Suspendedcymbal.jpg"); 
 }   
 
@@ -29,7 +29,7 @@ void keyPressedCheck()
     try {
       if(key == 'k' || key == 'K')// press k or K to play cymbals
          {
-           drumPlayer = drumMinim.loadFile("Sounds/Drum/cymbal.wav"); ////NullPointer
+           drumPlayer = drumMinim.loadFile("Sounds/Drum/cymbal.wav");
            drumPlayer.play();
          }
          if(key == 's' || key == 'S')// press s or S to play durm
