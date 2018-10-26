@@ -114,7 +114,6 @@ void draw()
   mouseUpdate();
   runState();
   checkState();
-  println(width, height);
 }
 
 void backUpdate()
