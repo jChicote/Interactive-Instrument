@@ -10,7 +10,7 @@ public class Keys
   public Keys (int key, float pitch, AudioContext ac, Sample sample, Gain g1)
   {
     this.key = key;
-    this.sp = new SamplePlayer(ac, sample); //NullPointer
+    this.sp = new SamplePlayer(ac, sample);
     objectGain = new Gain (ac, 1, 0.1f);
     sp.setPitch(new Glide(ac, pitch));
     sp.setLoopType(SamplePlayer.LoopType.LOOP_FORWARDS);
