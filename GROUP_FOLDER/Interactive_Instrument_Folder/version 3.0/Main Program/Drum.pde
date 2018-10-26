@@ -18,8 +18,8 @@ void methodRunner() {
 void Drumsetup()//set the interface of the drum
 {
     fill(255);
-    drum = loadImage("Icons/drum.jpg");
-    cymbals = loadImage("Icons/Suspendedcymbal.jpg"); 
+    drum = loadImage("Icons/drum.png");
+    cymbals = loadImage("Icons/cymbal.png"); 
 }   
 
 void keyPressedCheck()
@@ -52,9 +52,9 @@ void Drumdraw()
     text("Drum: Left Mouse Click or ‘s’",10,85);
     text("cymbals: Right Mouse Click or 'k'",10,120);
     imageMode(CORNER);
-    image(drum, 120, 300, 250, 250);
+    image(drum, 300, 300, 310, 250);
     imageMode(CENTER);
-    image(cymbals, 550, 450, 200, 200); 
+    image(cymbals, 750, 450, 250, 250); 
 }
 
 void mousePressedCheck()
