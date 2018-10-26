@@ -14,11 +14,7 @@ void mousePressed()
     if (backOver) {
       changeState("MENU");
     }
-    if (stateVar == 1) {
-      ////no code?
-    } else if (stateVar == 2) {
-      ////Ask Jaiden: You using mouse for anything?
-    } else if (stateVar == 3) {
+    if (stateVar == 3) {
       guitar.mousePressedCheck();
     } else if (stateVar == 4) {
       drum.mousePressedCheck();
@@ -37,14 +33,9 @@ void mouseReleased()
     }
     if (stateVar == 1) {
       keyboard.mouseReleasedCheck();
-    } else if (stateVar == 2) {
-      ////no code?
-    } else if (stateVar == 3) {
-      ////no code?
-    } else if (stateVar == 4) {
-      ////no code?
     }
   }
+}
 
 //This is the hander for the keys that are currently pressed in ALL states of the program
 void keyPressed()
@@ -88,12 +79,6 @@ void keyReleased()
   {
     if (stateVar == 1) {
       keyboard.keyReleasedCheck();
-    } else if (stateVar == 2) {
-      ////no code?
-    } else if (stateVar == 3) {
-      ////no code?
-    } else if (stateVar == 4) {
-      ////no code?
     }
   }
 }
