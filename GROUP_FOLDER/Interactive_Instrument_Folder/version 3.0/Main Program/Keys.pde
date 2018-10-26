@@ -31,6 +31,7 @@ public class Keys
     {
       fill(0);
     }
+    textSize(30);
     text(key + "", (key == 0 ? 900: (key - 1) * 100) + 50, 50);
   }
   
