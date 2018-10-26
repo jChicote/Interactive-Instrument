@@ -27,10 +27,11 @@ public void changeState(String tempState)
   System.gc();
 }
 
-//This is used for switching between displays and running the initial methods for beginning a new display and instrument
+//Used for switching between displays and running the initial methods for beginning a new display and instrument
 public void runState()
 {
   if (state == "MENU") {
+    background(baseColor);
     drawInstructions();
     drawRectangle();
     updateIcon();
@@ -39,7 +40,7 @@ public void runState()
   if (state == "OTHER") {
     if (input[0]) {
       stateVar = 1;
-      keyboardInitialiser();
+      keyboard.initialise();
     }
     if (input[1]) {
       stateVar = 2;
@@ -48,14 +49,15 @@ public void runState()
     if (input[2]) {
       stateVar = 3;
       minim = new Minim(this);
-      surface.setSize(690,450);  ////Change size?
-      guitar.methodRunner(); ////Might want to change to initaliser instead.
+      guitar.methodRunner();
     }
     if (input[3]) {
       stateVar = 4;
-      drumInitialiser(); ////Might want to change how this Initialiser works. Draws + set up?
+      drum.initialise();
     }
-    backUpdate();
+      widthScale = 700.0/float(width);
+      heightScale = 700.0/float(height);
+      backUpdate();
   }
 }
 
@@ -63,10 +65,8 @@ public void runState()
 public void checkState()
 {
   if (stateVar == 1) {
-    //runs method runner of KeyBoard class
     keyboard.methodRunner();
   } else if (stateVar == 2) {
-    //This runs the theremin
     interactiveTheremin.methodRunner();
   } else if (stateVar == 3) {
     guitar.methodRunner();
