@@ -1,9 +1,3 @@
-/* LEGEND
-/*== : Needs change from folks
-/*-= : Change on final
-//// : Bugs
-*/
-
 import processing.video.*;
 import gab.opencv.*;
 import java.util.*;
@@ -30,7 +24,7 @@ public float windowScale, heightScale, widthScale;
 public String state = "MENU";
 public color baseColor = color(33,33,33);
 
-//font variables
+//Font variables
 PFont titleFont;
 PFont defaultFont;
 PFont menuFont;
@@ -56,7 +50,7 @@ PImage frame, thresh;
 boolean videoAvailable = true;
 
 //Variables Associated with KEYBOARD;
-KeyBoard keyboard = new KeyBoard();
+Keyboard keyboard = new Keyboard();
 
 //Variables Associated with GUITAR;
 Guitar guitar = new Guitar();
@@ -65,7 +59,6 @@ AudioPlayer player;
 
 //Variables Associated with DRUM
 Drum drum = new Drum();
-Minim drumMinim;
 AudioPlayer drumPlayer;
 
 //sets surface size
@@ -77,6 +70,7 @@ void settings() {
 void setup()
 {
   background(baseColor);
+  //Prevents program from loading the video capture module if no cameras are detected to prevent crashing.
   String[] cameras = Capture.list();
   if (cameras.length == 0) {
     println("There are no cameras currently available");
@@ -97,7 +91,7 @@ void setup()
   deviation = (rectSizeY/2.5+height/5.8);
   
   //Fonts setup
-  titleFont = createFont("Fonts/GillSansBold.TTF", 35.0); /*-= Change this on final*/
+  titleFont = createFont("Fonts/GillSansBold.TTF", 35.0);
   defaultFont = createFont("Fonts/LucidaGrande.ttf", 10.0);
   menuFont = createFont("Fonts/GillSansCond.TTF", 30.0);
   
@@ -120,15 +114,14 @@ void draw()
   mouseUpdate();
   runState();
   checkState();
+  println(width, height);
 }
 
-void backUpdate() /*== Might need update*/
+void backUpdate()
 {
-  //backX = width - (150.0 * widthScale);
   backX = 0.80 * width;
   backY = 10.0 * heightScale;
-  backSizeX = width/5.0 * widthScale;
-  //backSizeX = width/6;
+  backSizeX = width/5.0 * widthScale-10;
   backSizeY = height/15.0 * heightScale;
 }
 
@@ -142,7 +135,11 @@ void captureEvent(Capture video) {
 //Method to reset the background.
 void reset() {
   iconState = 0;
+  stroke(0);
+  textFont(defaultFont);
   imageMode(CORNERS);
+  widthScale = 700.0/float(baseWidth);
+  heightScale = 700.0/float(baseHeight);
   surface.setSize(baseWidth, baseHeight);
   background(baseColor);
 }
@@ -160,8 +157,10 @@ void drawPrevious()
     rect(backX, backY, backSizeX, backSizeY);
     fill(255);
     textAlign(CENTER);
+    textFont(menuFont);
     textSize(20 * windowScale);
-    text("Back", backX+backSizeX/2, backY+backSizeY/1.45 - windowScale);
+    text("Back", backX+backSizeX/2, backY+backSizeY/1.3 - windowScale);
+    textFont(defaultFont);
   }
 }
 
@@ -193,15 +192,14 @@ void drawInstructions() {
   fill(15);
   rect(0,0, baseWidth, 55.0/heightScale);
   fill(233, 233, 233);
-  textSize(35.0 * windowScale);
   textAlign(CENTER);
-  textSize(30);
   textFont(titleFont);
   text("SELECT AN INSTRUMENT", width/2, 40.0/heightScale);
   stroke(255);
   line(0, 55.0/heightScale, baseWidth, 55.0/heightScale);
   stroke(0);
 }
+
 
 //This draws the instruments and its control methods.
 void drawIcon() {
@@ -214,10 +212,20 @@ void drawIcon() {
         dispCamera = contCamera[1];
         dispMouse = contMouse[0];
         dispKeyboard = contKeyboard[0];
+        fill(255);
+        textAlign(CENTER);
+        textFont(menuFont);
+        textSize(45);
+        text("(Camera Mode)", 900, 150);
         } else {
           dispCamera = contCamera[0];
           dispMouse = contMouse[1];
           dispKeyboard = contKeyboard[0];
+          fill(255);
+          textAlign(CENTER);
+          textFont(menuFont);
+          textSize(45);
+          text("(Mouse Mode)", 900, 150);
         }
     } else if (iconState == 2) { 
         dispCamera = contCamera[0];
@@ -237,18 +245,10 @@ void drawIcon() {
     
     float controlX = 760;
     float controlY = 600;
-    
-    fill(baseColor);
-    noStroke();
-    rect(640, 100,dispIcon.width, dispIcon.height);
-    rect(controlX,controlY,dispCamera.width, dispCamera.height);
-    rect(controlX+iconDeviation+10,controlY-2,dispMouse.width, dispMouse.height);
-    rect(controlX+iconDeviation*2,controlY,dispKeyboard.width, dispKeyboard.height);
     image(dispIcon, 640, 100);
     image(dispCamera, controlX, controlY);
     image(dispMouse, controlX+iconDeviation+10, controlY-2);
     image(dispKeyboard, controlX+iconDeviation*2, controlY);
-    stroke(0);
 }
 
 void updateIcon()
