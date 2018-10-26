@@ -73,7 +73,7 @@ void setup()
   //Prevents program from loading the video capture module if no cameras are detected to prevent crashing.
   String[] cameras = Capture.list();
   if (cameras.length == 0) {
-    println("There are no cameras currently available");
+    println("There are no cameras currently available.\nTheremin switching to mouse mode.");
     videoAvailable = false;
   } else {
     video = new Capture(this, 1280, 720);
